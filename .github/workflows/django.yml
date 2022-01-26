@@ -26,6 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pipenv
         pipenv sync --dev
+    - name: Copy .env
+      run: |
+        cp contrib/env-sample .env
     - name: Linter with flake8
       run: |
         pipenv run flake8
