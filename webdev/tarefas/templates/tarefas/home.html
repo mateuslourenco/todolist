@@ -20,6 +20,18 @@
                 </div>
                 <div class="form-text">{{ form.nome.errors }}</div>
             </form>
+            <h2 class="mt-5">Tarefas pendentes</h2>
+            {% for tarefa in tarefas_pendentes %}
+                <form>
+                    <div class="input-group mb-3">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox" value=""
+                                   aria-label="checkbox paratarefa">
+                        </div>
+                        <input type="text" class="form-control" aria-label="input para tarefa" placeholder="{{ tarefa.nome }}">
+                    </div>
+                </form>
+            {% endfor %}
         </div>
     </div>
 </div>
