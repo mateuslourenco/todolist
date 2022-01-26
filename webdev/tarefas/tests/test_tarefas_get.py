@@ -22,7 +22,6 @@ def test_botao_salvar_presente(client, resp):
     assertContains(resp, '<button type="submit"')
 
 
-
 @pytest.fixture
 def lista_de_tarefas_pendentes(db):
     tarefas = [
