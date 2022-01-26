@@ -26,6 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pipenv
         pipenv sync --dev
+    - name: Linter with flake8
+      run: |
+        pipenv run flake8
     - name: Run Tests
       run: |
         pipenv run pytest webdev
