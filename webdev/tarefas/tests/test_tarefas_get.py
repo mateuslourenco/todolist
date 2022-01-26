@@ -6,7 +6,7 @@ from webdev.tarefas.models import Tarefa
 
 
 @pytest.fixture
-def resp(client):
+def resp(client, db):
     return client.get(reverse('tarefas:home'))
 
 
