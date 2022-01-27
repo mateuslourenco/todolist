@@ -148,6 +148,8 @@ if AWS_ACCESS_KEY_ID:
 
         # static assets
         STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
+        COLLECTFAST_STRATEGY = 'collectfast.strategies.boto3.Boto3Strategy'
+
         STATIC_S3_PATH = 'static'
         STATIC_ROOT = f'/{STATIC_S3_PATH}/'
         STATIC_URL = f'//s3.amazonaws.com/{AWS_STORAGE_BUCKET_NAME}/{STATIC_S3_PATH}/'
