@@ -10,8 +10,8 @@ def tarefa_pendente(db):
 
 
 @pytest.fixture
-def resp_com_tarefa_pendente(client, tarefa_pendente):
-    return client.post(
+def resp_com_tarefa_pendente(client_com_usuario_logado, tarefa_pendente):
+    return client_com_usuario_logado.post(
         reverse('tarefas:detalhe', kwargs={'tarefa_id': tarefa_pendente.id}),
         data={'feita': 'true', 'nome': f'{tarefa_pendente.nome}-editada'}
     )
@@ -31,8 +31,8 @@ def tarefa_feita(db):
 
 
 @pytest.fixture
-def resp_com_tarefa_feita(client, tarefa_feita):
-    return client.post(
+def resp_com_tarefa_feita(client_com_usuario_logado, tarefa_feita):
+    return client_com_usuario_logado.post(
         reverse('tarefas:detalhe', kwargs={'tarefa_id': tarefa_feita.id}),
         data={'nome': f'{tarefa_feita.nome}-editada'}
     )

@@ -4,8 +4,8 @@ from webdev.tarefas.models import Tarefa
 
 
 @pytest.fixture
-def resp(client, db):
-    return client.post(reverse('tarefas:home'), data={'nome': 'Tarefa'})
+def resp(client_com_usuario_logado, db):
+    return client_com_usuario_logado.post(reverse('tarefas:home'), data={'nome': 'Tarefa'})
 
 
 def test_tarefa_existe_no_bd(resp):
@@ -17,8 +17,8 @@ def test_redirecionamento_depois_do_salvamento(resp):
 
 
 @pytest.fixture
-def resp_dado_invalido(client, db):
-    return client.post(reverse('tarefas:home'), data={'nome': ''})
+def resp_dado_invalido(client_com_usuario_logado, db):
+    return client_com_usuario_logado.post(reverse('tarefas:home'), data={'nome': ''})
 
 
 def test_tarefa_nao_existe_no_bd(resp_dado_invalido):
