@@ -5,8 +5,8 @@ from webdev.tarefas.models import Tarefa
 
 
 @pytest.fixture
-def tarefa_pendente(db):
-    return Tarefa.objects.create(nome='Tarefa1', feita=False)
+def tarefa_pendente(db, usuario_logado):
+    return Tarefa.objects.create(nome='Tarefa1', feita=False, usuario=usuario_logado)
 
 
 @pytest.fixture
@@ -26,8 +26,8 @@ def test_tarefa_feita(resp_com_tarefa_pendente):
 
 
 @pytest.fixture
-def tarefa_feita(db):
-    return Tarefa.objects.create(nome='Tarefa1', feita=True)
+def tarefa_feita(db, usuario_logado):
+    return Tarefa.objects.create(nome='Tarefa1', feita=True, usuario=usuario_logado)
 
 
 @pytest.fixture

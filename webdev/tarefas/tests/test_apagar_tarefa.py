@@ -5,8 +5,8 @@ from webdev.tarefas.models import Tarefa
 
 
 @pytest.fixture
-def tarefa(db):
-    return Tarefa.objects.create(nome='Tarefa1', feita=True)
+def tarefa(db, usuario_logado):
+    return Tarefa.objects.create(nome='Tarefa1', feita=True, usuario=usuario_logado)
 
 
 @pytest.fixture

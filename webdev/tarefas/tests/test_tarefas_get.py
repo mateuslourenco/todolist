@@ -23,20 +23,20 @@ def test_botao_salvar_presente(client, resp):
 
 
 @pytest.fixture
-def lista_de_tarefas_pendentes(db):
+def lista_de_tarefas_pendentes(db, usuario_logado):
     tarefas = [
-        Tarefa(nome='Tarefa1', feita=False),
-        Tarefa(nome='Tarefa2', feita=False),
+        Tarefa(nome='Tarefa1', feita=False, usuario=usuario_logado),
+        Tarefa(nome='Tarefa2', feita=False, usuario=usuario_logado),
     ]
     Tarefa.objects.bulk_create(tarefas)
     return tarefas
 
 
 @pytest.fixture
-def lista_de_tarefas_feitas(db):
+def lista_de_tarefas_feitas(db, usuario_logado):
     tarefas = [
-        Tarefa(nome='Tarefa3', feita=True),
-        Tarefa(nome='Tarefa4', feita=True),
+        Tarefa(nome='Tarefa3', feita=True, usuario=usuario_logado),
+        Tarefa(nome='Tarefa4', feita=True, usuario=usuario_logado),
     ]
     Tarefa.objects.bulk_create(tarefas)
     return tarefas
