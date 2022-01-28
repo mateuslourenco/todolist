@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -6,6 +7,7 @@ from webdev.tarefas.forms import TarefaNovaForm, TarefaForm
 from webdev.tarefas.models import Tarefa
 
 
+@login_required
 def home(request):
     if request.method == 'POST':
         form = TarefaNovaForm(request.POST)
