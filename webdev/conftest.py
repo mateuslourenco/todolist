@@ -4,8 +4,8 @@ from model_mommy import mommy
 
 @pytest.fixture
 def usuario_logado(db, django_user_model):
-    usuario_modelo = mommy.make(django_user_model)
-    return usuario_modelo
+    usuario = mommy.make(django_user_model)
+    return usuario
 
 
 @pytest.fixture

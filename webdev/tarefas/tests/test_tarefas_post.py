@@ -4,8 +4,8 @@ from webdev.tarefas.models import Tarefa
 
 
 @pytest.fixture
-def resp(client_com_usuario_logado, db):
-    return client_com_usuario_logado.post(reverse('tarefas:home'), data={'nome': 'Tarefa'})
+def resp(client_com_usuario_logado, db, usuario_logado):
+    return client_com_usuario_logado.post(reverse('tarefas:home'), data={'nome': 'Tarefa', 'usuario': usuario_logado})
 
 
 def test_tarefa_existe_no_bd(resp):

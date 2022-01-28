@@ -12,7 +12,9 @@ def home(request):
     if request.method == 'POST':
         form = TarefaNovaForm(request.POST)
         if form.is_valid():
-            form.save()
+            tarefa = form.save(commit=False)
+            tarefa.usuario = request.user
+            tarefa.save()
             return HttpResponseRedirect(reverse('tarefas:home'))
         else:
             tarefas_pendetes = Tarefa.objects.filter(feita=False).all()
