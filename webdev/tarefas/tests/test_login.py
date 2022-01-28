@@ -45,3 +45,4 @@ def test_botao_sair_disponivel(resp_home_com_usuario_logado):
 
 def test_link_de_logout_disponivel(resp_home_com_usuario_logado):
     assert_contains(resp_home_com_usuario_logado, reverse('logout'))
+
