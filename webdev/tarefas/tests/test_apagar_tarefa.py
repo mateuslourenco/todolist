@@ -10,9 +10,9 @@ def tarefa(db):
 
 
 @pytest.fixture
-def resp(client, tarefa):
-    return client.post(reverse('tarefas:apagar', kwargs={'tarefa_id': tarefa.id}))
+def resp(client_com_usuario_logado, tarefa):
+    return client_com_usuario_logado.post(reverse('tarefas:apagar', kwargs={'tarefa_id': tarefa.id}))
 
 
-def test_apagar_tarefa(client, resp):
+def test_apagar_tarefa(client_com_usuario_logado, resp):
     assert not Tarefa.objects.exists()

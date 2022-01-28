@@ -6,11 +6,11 @@ from webdev.tarefas.models import Tarefa
 
 
 @pytest.fixture
-def resp(client, db):
-    return client.get(reverse('tarefas:home'))
+def resp(client_com_usuario_logado, db):
+    return client_com_usuario_logado.get(reverse('tarefas:home'))
 
 
-def test_status_code(client, resp):
+def test_status_code(resp):
     assert resp.status_code == 200
 
 
@@ -47,11 +47,13 @@ def resp_com_lista_de_tarefas(client, lista_de_tarefas_pendentes, lista_de_taref
     return client.get(reverse('tarefas:home'))
 
 
-def test_listar_de_tarefas_pendentes_presentes(client, resp_com_lista_de_tarefas, lista_de_tarefas_pendentes):
+def test_listar_de_tarefas_pendentes_presentes(client_com_usuario_logado, resp_com_lista_de_tarefas,
+                                               lista_de_tarefas_pendentes):
     for tarefa in lista_de_tarefas_pendentes:
         assertContains(resp_com_lista_de_tarefas, tarefa.nome)
 
 
-def test_listar_de_tarefas_feitas_presentes(client, resp_com_lista_de_tarefas, lista_de_tarefas_feitas):
+def test_listar_de_tarefas_feitas_presentes(client_com_usuario_logado, resp_com_lista_de_tarefas,
+                                            lista_de_tarefas_feitas):
     for tarefa in lista_de_tarefas_feitas:
         assertContains(resp_com_lista_de_tarefas, tarefa.nome)
