@@ -43,12 +43,22 @@ def resp_home_com_usuario_logado(client_com_usuario_logado, db):
     return client_com_usuario_logado.get(reverse('tarefas:home'))
 
 
+def test_nome_usuario_disponivel(resp_home_com_usuario_logado, usuario_logado):
+    username_capitalize = str(usuario_logado.username).capitalize()
+    assert_contains(resp_home_com_usuario_logado, f'Olá {username_capitalize}!')
+
+
 def test_botao_sair_disponivel(resp_home_com_usuario_logado):
     assert_contains(resp_home_com_usuario_logado, 'Sair')
 
 
 def test_link_de_logout_disponivel(resp_home_com_usuario_logado):
     assert_contains(resp_home_com_usuario_logado, reverse('logout'))
+
+
+def test_nome_usuario_indisponivel(resp, usuario_logado):
+    username_capitalize = str(usuario_logado.username).capitalize()
+    assert_not_contains(resp, f'Olá {username_capitalize}!')
 
 
 def test_botao_sair_indisponivel(resp):
