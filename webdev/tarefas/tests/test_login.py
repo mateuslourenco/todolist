@@ -2,7 +2,7 @@ import pytest
 from django.urls import reverse
 from model_mommy import mommy
 
-from webdev.django_assertions import assert_contains
+from webdev.django_assertions import assert_contains, assert_not_contains
 
 
 @pytest.fixture
@@ -47,9 +47,13 @@ def test_botao_sair_disponivel(resp_home_com_usuario_logado):
     assert_contains(resp_home_com_usuario_logado, 'Sair')
 
 
-def test_nome_usuario_disponivel(resp_home_com_usuario_logado, usuario_logado):
-    assert_contains(resp_home_com_usuario_logado, usuario_logado.username)
-
-
 def test_link_de_logout_disponivel(resp_home_com_usuario_logado):
     assert_contains(resp_home_com_usuario_logado, reverse('logout'))
+
+
+def test_botao_sair_indisponivel(resp):
+    assert_not_contains(resp, 'Sair')
+
+
+def test_link_de_logout_indisponivel(resp):
+    assert_not_contains(resp, reverse('logout'))
