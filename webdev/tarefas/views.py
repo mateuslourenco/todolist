@@ -17,8 +17,8 @@ def home(request):
             tarefa.save()
             return HttpResponseRedirect(reverse('tarefas:home'))
         else:
-            tarefas_pendetes = Tarefa.objects.filter(feita=False).all()
-            tarefas_feitas = Tarefa.objects.filter(feita=True).all()
+            tarefas_pendetes = Tarefa.objects.filter(feita=False, usuario_id=request.user).all()
+            tarefas_feitas = Tarefa.objects.filter(feita=True, usuario_id=request.user).all()
             return render(
                 request, 'tarefas/home.html',
                 {
@@ -27,8 +27,8 @@ def home(request):
                     'tarefas_feitas': tarefas_feitas
                 },
                 status=400)
-    tarefas_pendetes = Tarefa.objects.filter(feita=False).all()
-    tarefas_feitas = Tarefa.objects.filter(feita=True).all()
+    tarefas_pendetes = Tarefa.objects.filter(feita=False, usuario_id=request.user).all()
+    tarefas_feitas = Tarefa.objects.filter(feita=True, usuario_id=request.user).all()
 
     return render(
         request, 'tarefas/home.html',
