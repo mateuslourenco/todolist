@@ -4,7 +4,7 @@ Código desenvolvido no módulo de [Imersão Django](https://www.youtube.com/wat
 
 Projeto disponível em https://todolist-django-m.herokuapp.com/
 
-Projeto "To Do LIst" é um checklist construído com Django para as funções básicas de CRUD.
+Projeto "To Do LIst" é um checklist construído com Django para treinar as funções básicas de CRUD.
 
 
 [![Django CI](https://github.com/mateuslourenco/todolist/actions/workflows/django.yml/badge.svg)](https://github.com/mateuslourenco/todolist/actions/workflows/django.yml)
