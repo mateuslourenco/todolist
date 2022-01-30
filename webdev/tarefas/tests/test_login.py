@@ -19,7 +19,7 @@ def test_botao_login_disponivel(resp):
 
 
 def test_botao_registrar_disponivel(resp):
-    assert_contains(resp, 'Registre-se')
+    assert_contains(resp, 'Registrar')
 
 
 def test_link_registrar_disponivel(resp):
