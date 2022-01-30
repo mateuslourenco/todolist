@@ -1,5 +1,4 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
@@ -18,16 +17,37 @@ class TarefaForm(ModelForm):
         fields = ['nome', 'feita']
 
 
-class NovoUsuario(UserCreationForm):
-    email = forms.EmailField(required=True)
+class NovoUsuarioForm(forms.Form):
+    username = forms.CharField()
+    email = forms.EmailField(required=False)
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "id": "user-password"
+            }
+        )
+    )
+    password2 = forms.CharField(
+        label='Confirm Password',
+        widget=forms.PasswordInput(
+            attrs={
+                "class": "form-control",
+                "id": "user-confirm-password"
+            }
+        )
+    )
 
-    class Meta:
-        model = User
-        fields = ("username", "email", "password1", "password2")
+    def validar_usarname(self):
+        username = self.cleaned_data.get("username")
+        qs = User.objects.filter(username__iexact=username)
+        if qs.exists():
+            raise forms.ValidationError("Esse usuário é inválido!")
+        return username
 
-    def save(self, commit=True):
-        user = super(NovoUsuario, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
+    def validar_email(self):
+        email = self.cleaned_data.get("email")
+        qs = User.objects.filter(email__iexact=email)
+        if qs.exists():
+            raise forms.ValidationError("Esse email é inválido!")
+        return email
