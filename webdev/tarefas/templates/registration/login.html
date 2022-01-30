@@ -1,6 +1,6 @@
 {% extends "tarefas/base.html" %}
 {% block content %}
-<form method="post"}>
+<form method="post" }>
     {% csrf_token %}
     <div class="container">
         <div class="row justify-content-center">
@@ -13,11 +13,15 @@
                     <label for="{{ form.password.id_for_label }}" class="form-label">Senha</label>
                     {{ form.password }}
                 </div>
-                <button type="submit" class="btn btn-success">Logar</button>
+                    <button type="submit" class="btn btn-success">Logar</button>
+                    <a type="button" class="btn btn-primary mt-3" href="{% url 'tarefas:registrar' %}">Registre-se</a>
+                </div>
+
                 {% if form.errors %}
                 <p>Seu usuário e senha não combinam. Por favor, tente novamente</p>
                 {% endif %}
             </div>
         </div>
 </form>
+
 {% endblock %}
