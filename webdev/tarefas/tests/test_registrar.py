@@ -22,7 +22,7 @@ def test_status_code(resp):
 def resp_post(client, db, usuario):
     return client.post(reverse('tarefas:registrar'),
                        {
-                           'username': f'novousername',
+                           'username': 'novousername',
                            'password1': usuario.password,
                            'password2': usuario.password,
                         })
