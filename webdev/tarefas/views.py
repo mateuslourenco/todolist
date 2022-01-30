@@ -52,3 +52,7 @@ def apagar(request, tarefa_id):
     if request.method == 'POST':
         Tarefa.objects.filter(id=tarefa_id).delete()
     return HttpResponseRedirect(reverse('tarefas:home'))
+
+
+def registrar(request):
+    return render(request, 'registration/registrar.html')

@@ -18,6 +18,14 @@ def test_botao_login_disponivel(resp):
     assert_contains(resp, 'Logar')
 
 
+def test_botao_registrar_disponivel(resp):
+    assert_contains(resp, 'Registre-se')
+
+
+def test_link_registrar_disponivel(resp):
+    assert_contains(resp, reverse('tarefas:registrar'))
+
+
 @pytest.fixture
 def usuario(db, django_user_model):
     usuario_modelo = mommy.make(django_user_model)
