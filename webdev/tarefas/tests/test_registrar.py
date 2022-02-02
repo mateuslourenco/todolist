@@ -57,3 +57,8 @@ def resp_com_usuario_criado_ja_existente(client, db, usuario):
 def test_usuario_criado_ja_existente(usuario_criado, resp_com_usuario_criado_ja_existente):
     assert resp_com_usuario_criado_ja_existente.status_code == 302
     assert resp_com_usuario_criado_ja_existente.url == reverse('tarefas:registrar')
+
+
+def test_usuario_logado_redirect(client_com_usuario_logado, resp):
+    assert resp.status_code == 302
+    assert resp.url == reverse('tarefas:home')

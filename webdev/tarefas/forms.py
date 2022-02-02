@@ -1,5 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth import password_validation
+from django.utils.translation import gettext_lazy as _
 from django.forms import ModelForm
 
 from webdev.tarefas.models import Tarefa
@@ -19,35 +20,15 @@ class TarefaForm(ModelForm):
 
 class NovoUsuarioForm(forms.Form):
     username = forms.CharField()
-    email = forms.EmailField(required=False)
     password1 = forms.CharField(
-        widget=forms.PasswordInput(
-            attrs={
-                "class": "form-control",
-                "id": "user-password"
-            }
-        )
+        label=_("Password"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        help_text=password_validation.password_validators_help_text_html(),
     )
     password2 = forms.CharField(
-        label='Confirm Password',
-        widget=forms.PasswordInput(
-            attrs={
-                "class": "form-control",
-                "id": "user-confirm-password"
-            }
-        )
+        label=_("Password confirmation"),
+        widget=forms.PasswordInput(attrs={'autocomplete': 'new-password'}),
+        strip=False,
+        help_text=_("Enter the same password as before, for verification."),
     )
-
-    def validar_usarname(self):
-        username = self.cleaned_data.get("username")
-        qs = User.objects.filter(username__iexact=username)
-        if qs.exists():
-            raise forms.ValidationError("Esse usuário é inválido!")
-        return username
-
-    def validar_email(self):
-        email = self.cleaned_data.get("email")
-        qs = User.objects.filter(email__iexact=email)
-        if qs.exists():
-            raise forms.ValidationError("Esse email é inválido!")
-        return email

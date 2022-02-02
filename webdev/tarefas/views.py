@@ -58,17 +58,19 @@ def apagar(request, tarefa_id):
 
 
 def registrar(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('tarefas:home'))
+
     if request.method == 'POST':
         form = NovoUsuarioForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password1')
             if User.objects.filter(username=username).first():
-                messages.error(request, "This username is already taken")
+                messages.error(request, "Usuário inválido")
                 return redirect('tarefas:registrar')
             else:
-                usuario = User.objects.create_user(username, email, password)
+                usuario = User.objects.create_user(username, password)
                 login(request, usuario)
                 return HttpResponseRedirect(reverse('tarefas:home'))
     else:
