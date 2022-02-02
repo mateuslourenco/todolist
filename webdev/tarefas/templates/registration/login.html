@@ -27,17 +27,13 @@
                         <a type="button" class="btn btn-primary mt-2" href="{% url 'tarefas:registrar' %}">Registrar</a>
                     </div>
                 </div>
+                {% if form.errors %}
+                <div class="alert alert-danger mt-2">Seu usuário e senha não combinam. Por favor, tente novamente</div>
+                {% endif %}
             </div>
         </div>
-
+    </form>
 </div>
 
-{% if form.errors %}
-<p>Seu usuário e senha não combinam. Por favor, tente novamente</p>
-{% endif %}
-</div>
-</form>
-
-</div>
 
 {% endblock %}
