@@ -15,11 +15,12 @@
                     {{ field }}
                 </div>
                 {% endfor %}
+                {% if erros %}
+                <p>{{ erros }}</p>
+                {% endif %}
                 <button type="submit" class="btn btn-primary mt-3">Registrar</button>
             </div>
         </div>
     </form>
 </div>
-
-
 {% endblock %}

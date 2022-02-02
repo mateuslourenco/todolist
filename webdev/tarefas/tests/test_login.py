@@ -14,8 +14,8 @@ def test_login_form_page(resp):
     assert resp.status_code == 200
 
 
-def test_botao_login_disponivel(resp):
-    assert_contains(resp, 'Logar')
+def test_botao_entrar_disponivel(resp):
+    assert_contains(resp, 'Entrar')
 
 
 def test_botao_registrar_disponivel(resp):
