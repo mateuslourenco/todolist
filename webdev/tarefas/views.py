@@ -69,6 +69,9 @@ def registrar(request):
             if User.objects.filter(username=username).first():
                 messages.error(request, "Usuário inválido")
                 return redirect('tarefas:registrar')
+            elif len(password) < 8:
+                messages.error(request, "Senha inválida")
+                return redirect('tarefas:registrar')
             else:
                 usuario = User.objects.create_user(username, password)
                 login(request, usuario)
