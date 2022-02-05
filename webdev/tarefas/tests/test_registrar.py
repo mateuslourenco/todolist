@@ -2,6 +2,7 @@ import pytest
 from django.urls import reverse
 from model_mommy import mommy
 
+from webdev.django_assertions import assert_contains
 from webdev.tarefas.models import User
 
 
@@ -62,3 +63,18 @@ def test_usuario_criado_ja_existente(usuario_criado, resp_com_usuario_criado_ja_
 def test_usuario_logado_redirect(client_com_usuario_logado, resp):
     assert resp.status_code == 302
     assert resp.url == reverse('tarefas:home')
+
+
+@pytest.fixture
+def resp_com_senha_invalida(client, db, usuario):
+    return client.post(reverse('tarefas:registrar'),
+                       {
+                           'username': 'usernamesenhainvalida',
+                           'password1': '1234',
+                           'password2': '1234',
+                        })
+
+
+def test_senha_invalida(resp_com_senha_invalida):
+    assert resp_com_senha_invalida.status_code == 302
+    assert resp_com_senha_invalida.url == reverse('tarefas:registrar')
