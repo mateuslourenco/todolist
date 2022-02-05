@@ -73,7 +73,7 @@ def registrar(request):
                 messages.error(request, "Senha inválida")
                 return redirect('tarefas:registrar')
             else:
-                usuario = User.objects.create_user(username, password)
+                usuario = User.objects.create_user(username=username, password=password)
                 login(request, usuario)
                 return HttpResponseRedirect(reverse('tarefas:home'))
     else:
