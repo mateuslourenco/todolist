@@ -56,8 +56,7 @@ def resp_com_usuario_criado_ja_existente(client, db, usuario):
 
 
 def test_usuario_criado_ja_existente(usuario_criado, resp_com_usuario_criado_ja_existente):
-    assert resp_com_usuario_criado_ja_existente.status_code == 302
-    assert resp_com_usuario_criado_ja_existente.url == reverse('tarefas:registrar')
+    assert_contains(resp_com_usuario_criado_ja_existente, 'Um usuário com este nome de usuário já existe.')
 
 
 def test_usuario_logado_redirect(client_com_usuario_logado, resp):
@@ -69,12 +68,11 @@ def test_usuario_logado_redirect(client_com_usuario_logado, resp):
 def resp_com_senha_invalida(client, db, usuario):
     return client.post(reverse('tarefas:registrar'),
                        {
-                           'username': 'usernamesenhainvalida',
+                           'username': usuario.username,
                            'password1': '1234',
                            'password2': '1234',
                         })
 
 
 def test_senha_invalida(resp_com_senha_invalida):
-    assert resp_com_senha_invalida.status_code == 302
-    assert resp_com_senha_invalida.url == reverse('tarefas:registrar')
+    assert_contains(resp_com_senha_invalida, 'Esta senha')
