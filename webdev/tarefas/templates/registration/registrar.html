@@ -16,13 +16,25 @@
                 </div>
                 {% endfor %}
                 <button type="submit" class="btn btn-primary">Registrar</button>
-                {% for message in messages %}
+                <!--                {% for message in messages %}-->
 
-                <div class="alert alert-danger mt-2">
-                    <a class="close" href="#" data-dismiss="alert">×</a>
-                    {{ message }}
-                </div>
-                {% endfor %}
+                <!--                <div class="alert alert-danger mt-2">-->
+                <!--                    <a class="close" href="#" data-dismiss="alert">×</a>-->
+                <!--                    {{ message }}-->
+                <!--                </div>-->
+                <!--                {% endfor %}-->
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger mt-2"><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a></div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                    {% if form.non_field_errors %}
+                    {{ form.non_field_errors }}
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </form>

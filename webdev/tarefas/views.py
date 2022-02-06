@@ -1,13 +1,12 @@
-from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse
 
-from webdev.tarefas.forms import TarefaNovaForm, TarefaForm, NovoUsuarioForm
-from webdev.tarefas.models import Tarefa, User
+from webdev.tarefas.forms import TarefaNovaForm, TarefaForm
+from webdev.tarefas.models import Tarefa
 
 
 @login_required
@@ -62,20 +61,15 @@ def registrar(request):
         return HttpResponseRedirect(reverse('tarefas:home'))
 
     if request.method == 'POST':
-        form = NovoUsuarioForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            if User.objects.filter(username=username).first():
-                messages.error(request, "Usuário inválido")
-                return redirect('tarefas:registrar')
-            elif len(password) < 8:
-                messages.error(request, "Senha inválida")
-                return redirect('tarefas:registrar')
-            else:
-                usuario = User.objects.create_user(username=username, password=password)
-                login(request, usuario)
-                return HttpResponseRedirect(reverse('tarefas:home'))
+            if form.is_valid():
+                form.save()
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password2')
+                user = authenticate(username=username, password=password)
+                login(request, user)
+                return HttpResponseRedirect('/')
     else:
         form = UserCreationForm()
     return render(request, 'registration/registrar.html', {'form': form})
