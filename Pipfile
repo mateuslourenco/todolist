@@ -17,6 +17,8 @@ pytest-django = "*"
 flake8 = "*"
 model-mommy = "*"
 django-debug-toolbar = "*"
+pytest-cov = "*"
+codecov = "*"
 
 [requires]
 python_version = "3.9"
