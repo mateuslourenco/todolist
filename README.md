@@ -5,6 +5,9 @@ Código desenvolvido no módulo de [Imersão Django](https://www.youtube.com/wat
 Projeto disponível em https://todolist-django-m.herokuapp.com/
 
 [![Django CI](https://github.com/mateuslourenco/todolist/actions/workflows/django.yml/badge.svg)](https://github.com/mateuslourenco/todolist/actions/workflows/django.yml)
+[![Updates](https://pyup.io/repos/github/mateuslourenco/todolist/shield.svg)](https://pyup.io/repos/github/mateuslourenco/todolist/)
+[![Python 3](https://pyup.io/repos/github/mateuslourenco/todolist/python-3-shield.svg)](https://pyup.io/repos/github/mateuslourenco/todolist/)
+
 
 ## Descrição
 
