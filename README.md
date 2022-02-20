@@ -18,7 +18,9 @@ Neste projeto é possível cadastrar um novo usuário, realizar login, além de 
 - Instale o pipenv 
 - Instale as dependencias
 - Copie as variáveis de ambiante
-- Rode as migrações 
+- Inicie o banco de dados postgres com docker
+- Rode as migrações
+
 
 ```
 git clone https://github.com/mateuslourenco/todolist.git
@@ -26,6 +28,7 @@ cd todolist
 python -m pip install pipenv
 pipenv sync -d
 cp contrib/env-sample .env
+docker-compose up -d
 pipenv run python manage.py migrate
 pipenv run python manage.py runserver
 ```
