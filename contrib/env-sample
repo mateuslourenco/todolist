@@ -1,4 +1,4 @@
-DEBUG=False
+DEBUG=True
 SECRET_KEY=DEFINA SUA CHAVE SECRETA
 DATABASE_URL=postgres://postgres:postgres@localhost/postgres:5434/postgres
 
