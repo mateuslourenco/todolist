@@ -43,4 +43,9 @@ jobs:
         pipenv run flake8
     - name: Run Tests
       run: |
-        pipenv run pytest webdev
+        pipenv run pytest --cov=webdev
+    - name: Posting covarage
+      env:
+        super_secret: ${{ secrets.CODECOV_TOKEN }}
+      run: |
+        pipenv run codecov
