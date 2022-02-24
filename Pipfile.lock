@@ -34,11 +34,10 @@
         },
         "botocore": {
             "hashes": [
-                "sha256:979e5c5e826ff115f4903fe9887b191f3809229f694a747f910e1221fe63efc7",
-                "sha256:ca33f747c67cd0e109fab9398d39c38c1a2df352c1e1f9823839df8f1db58046"
+                "sha256:5d1a2a2ac72461bbaa79317b3e4cb72c7ebb315aef184d90f72ec1f6dba0ca6c",
+                "sha256:a34118bfadc02903ab404148822fe5a6de7a3bb58943f1a6a19cc8b0446d2a50"
             ],
-            "markers": "python_version >= '3.6'",
-            "version": "==1.24.3"
+            "version": "==1.24.7"
         },
         "collectfast": {
             "hashes": [
