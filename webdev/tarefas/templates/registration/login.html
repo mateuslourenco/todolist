@@ -2,30 +2,19 @@
 {% block title %}To Do List - Entrar{% endblock %}
 {% block content %}
 
-<div class="container">
+<div class="container text-center">
     <form method="post" }>
         {% csrf_token %}
-        <div class="row justify-content-center">
-            <div class="col-8">
-                <h2 class="text-center">Login</h2>
-                <div class="col-sm-8">
-                    <div class="col-sm-4">
-                        <label for="{{ form.username.id_for_label }}" class="form-label">Usuário</label>
-                    </div>
-                </div>
-                {{ form.username }}
-
-                <div class="col-sm-8">
-                    <div class="col-sm-4">
-                        <label for="{{ form.password.id_for_label }}" class="form-label ">Senha</label>
-                    </div>
-                    {{ form.password }}
-                </div>
-                <div class="col-sm-8">
-                    <div class="col-sm-4">
-                        <button type="submit" class="btn btn-success mt-2">Entrar</button>
-                        <a type="button" class="btn btn-primary mt-2" href="{% url 'tarefas:registrar' %}">Registrar</a>
-                    </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-xl-4 offset-md-3 offset-xl-4">
+                <h2>Login</h2>
+                <input class="form-control mb-2" type="text" name="username" autofocus="" autocapitalize="none"
+                       autocomplete="username" maxlength="150" required="" id="id_username" placeholder="Usuário">
+                <input class="form-control" type="password" name="password" autocomplete="current-password"
+                       required="" id="id_password" placeholder="Senha">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success mt-2">Entrar</button>
+                    <a type="button" class="btn btn-primary" href="{% url 'tarefas:registrar' %}">Registrar</a>
                 </div>
                 {% if form.errors %}
                 <div class="alert alert-danger mt-2">Seu usuário e senha não combinam. Por favor, tente novamente</div>
