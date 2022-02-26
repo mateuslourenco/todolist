@@ -2,33 +2,37 @@
 {% block title%}To Do List - Registrar{% endblock %}
 {% block content %}
 
-<div class="container text-center">
+<div class="container text-center mt-3">
     <form method="post">
         {% csrf_token %}
-        <div class="col-xs-12 col-md-6 col-xl-4 offset-md-3 offset-xl-4">
-            <h3 class="text-center mb-2">Registrar</h3>
-            <input class="form-control mb-2" type="text" name="username" maxlength="150" autocapitalize="none"
-                   autocomplete="username" autofocus="" required="" id="id_username" placeholder="Usuário">
-            <input class="form-control mb-2" type="password" name="password1" autocomplete="new-password" required=""
-                   id="id_password1" aria-autocomplete="list" placeholder="Senha">
-            <input class="form-control mb-2" type="password" name="password2" autocomplete="new-password" required=""
-                   id="id_password2" placeholder="Confirmação de senha">
-            <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary">Registrar</button>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-xl-4 offset-md-3 offset-xl-4">
+                <h2 class="text-center mb-2">Registrar</h2>
+                <input class="form-control mb-2" type="text" name="username" maxlength="150" autocapitalize="none"
+                       autocomplete="username" autofocus="" required="" id="id_username" placeholder="Usuário">
+                <input class="form-control mb-2" type="password" name="password1" autocomplete="new-password"
+                       required=""
+                       id="id_password1" aria-autocomplete="list" placeholder="Senha">
+                <input class="form-control mb-2" type="password" name="password2" autocomplete="new-password"
+                       required=""
+                       id="id_password2" placeholder="Confirmação de senha">
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </div>
+                {% if form.errors %}
+                {% for field in form %}
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger mt-2"><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endfor %}
+                {% if form.non_field_errors %}
+                {{ form.non_field_errors }}
+                {% endif %}
+                {% endif %}
             </div>
-            {% if form.errors %}
-            {% for field in form %}
-            {% if field.errors %}
-            {% for error in field.errors %}
-            <div class="alert alert-danger mt-2"><a href="#id_{{ field.name }}" class="error">{{ error|escape }}</a>
-            </div>
-            {% endfor %}
-            {% endif %}
-            {% endfor %}
-            {% if form.non_field_errors %}
-            {{ form.non_field_errors }}
-            {% endif %}
-            {% endif %}
         </div>
     </form>
 </div>
