@@ -15,10 +15,10 @@ collectfast = "*"
 [dev-packages]
 pytest-django = "*"
 flake8 = "*"
-model-mommy = "*"
 django-debug-toolbar = "*"
 pytest-cov = "*"
 codecov = "*"
+model-bakery = "*"
 
 [requires]
 python_version = "3.9"

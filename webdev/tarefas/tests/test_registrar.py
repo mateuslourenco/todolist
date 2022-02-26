@@ -1,6 +1,6 @@
 import pytest
 from django.urls import reverse
-from model_mommy import mommy
+from model_bakery import baker
 
 from webdev.django_assertions import assert_contains
 from webdev.tarefas.models import User
@@ -8,7 +8,7 @@ from webdev.tarefas.models import User
 
 @pytest.fixture
 def usuario(db, django_user_model):
-    usuario_criado = mommy.make(django_user_model)
+    usuario_criado = baker.make(django_user_model)
     return usuario_criado
 
 
