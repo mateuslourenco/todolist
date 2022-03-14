@@ -31,7 +31,7 @@ def test_texto_esqueceu_a_senha_disponivel(resp):
 
 
 def test_link_esqueceu_a_senha_disponivel(resp):
-    assert_contains(resp, reverse('autenticacao:recuperar_senha'))
+    assert_contains(resp, reverse('password_reset'))
 
 
 @pytest.fixture
