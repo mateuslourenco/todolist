@@ -27,7 +27,7 @@ def test_link_registrar_disponivel(resp):
 
 
 def test_texto_esqueceu_a_senha_disponivel(resp):
-    assert_contains(resp, 'Esqueceu a senha?')
+    assert_contains(resp, 'Esqueceu sua senha?')
 
 
 def test_link_esqueceu_a_senha_disponivel(resp):

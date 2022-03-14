@@ -38,6 +38,7 @@ LOGOUT_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
+    'webdev.autenticacao',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +47,6 @@ INSTALLED_APPS = [
     'collectfast',
     'django.contrib.staticfiles',
     'webdev.tarefas',
-    'webdev.autenticacao',
 ]
 
 MIDDLEWARE = [
