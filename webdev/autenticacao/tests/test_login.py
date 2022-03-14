@@ -26,6 +26,14 @@ def test_link_registrar_disponivel(resp):
     assert_contains(resp, reverse('autenticacao:registrar'))
 
 
+def test_texto_esqueceu_a_senha_disponivel(resp):
+    assert_contains(resp, 'Esqueceu a senha?')
+
+
+def test_link_esqueceu_a_senha_disponivel(resp):
+    assert_contains(resp, reverse('autenticacao:recuperar_senha'))
+
+
 @pytest.fixture
 def usuario(db, django_user_model):
     usuario_modelo = baker.make(django_user_model)
