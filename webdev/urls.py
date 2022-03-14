@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('django.contrib.auth.urls')),
     path('', include('webdev.tarefas.urls')),
+    path('', include('webdev.autenticacao.urls')),
 ]
 
 if settings.DEBUG:
