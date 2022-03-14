@@ -14,7 +14,7 @@
                        required="" id="id_password" placeholder="Senha">
                 <div class="d-grid gap-2">
                     <button type="submit" class="btn btn-success mt-2">Entrar</button>
-                    <a type="button" class="btn btn-primary" href="{% url 'tarefas:registrar' %}">Registrar</a>
+                    <a type="button" class="btn btn-primary" href="{% url 'autenticacao:registrar' %}">Registrar</a>
                 </div>
                 {% if form.errors %}
                 <div class="alert alert-danger mt-2">Seu usuário e senha não combinam. Por favor, tente novamente</div>

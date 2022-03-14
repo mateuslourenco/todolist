@@ -23,7 +23,7 @@ def test_botao_registrar_disponivel(resp):
 
 
 def test_link_registrar_disponivel(resp):
-    assert_contains(resp, reverse('tarefas:registrar'))
+    assert_contains(resp, reverse('autenticacao:registrar'))
 
 
 @pytest.fixture

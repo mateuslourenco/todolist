@@ -14,7 +14,7 @@ def usuario(db, django_user_model):
 
 @pytest.fixture
 def resp(client):
-    return client.get(reverse('tarefas:registrar'))
+    return client.get(reverse('autenticacao:registrar'))
 
 
 def test_status_code(resp):
@@ -23,7 +23,7 @@ def test_status_code(resp):
 
 @pytest.fixture
 def resp_com_usuario_criado(client, db, usuario):
-    return client.post(reverse('tarefas:registrar'),
+    return client.post(reverse('autenticacao:registrar'),
                        {
                            'username': 'novousername',
                            'password1': usuario.password,
@@ -47,7 +47,7 @@ def usuario_criado(db, usuario):
 
 @pytest.fixture
 def resp_com_usuario_criado_ja_existente(client, db, usuario):
-    return client.post(reverse('tarefas:registrar'),
+    return client.post(reverse('autenticacao:registrar'),
                        {
                            'username': 'usuario_criado',
                            'password1': usuario.password,
@@ -66,7 +66,7 @@ def test_usuario_logado_redirect(client_com_usuario_logado, resp):
 
 @pytest.fixture
 def resp_com_senha_invalida(client, db, usuario):
-    return client.post(reverse('tarefas:registrar'),
+    return client.post(reverse('autenticacao:registrar'),
                        {
                            'username': usuario.username,
                            'password1': '1234',

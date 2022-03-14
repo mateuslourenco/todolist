@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'collectfast',
     'django.contrib.staticfiles',
     'webdev.tarefas',
+    'webdev.autenticacao',
 ]
 
 MIDDLEWARE = [
